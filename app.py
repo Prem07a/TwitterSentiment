@@ -6,6 +6,7 @@ import joblib
 
 model = joblib.load('./models/bestSentiment_v.pkl')
 vectorizer = joblib.load('./models/tfidf_vectorizer.pkl')
+st.set_page_config(page_title="Twitter Sentiment")
 
 def predict_sentiment(text):
     
