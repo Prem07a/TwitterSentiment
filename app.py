@@ -4,8 +4,8 @@ import streamlit.components.v1 as components
 import joblib
 
 
-model = joblib.load('./models/bestSentiment_cl.pkl')
-vectorizer = joblib.load('./models/vectorizer_cl.pkl')
+model = joblib.load('./models/bestSentiment_css.pkl')
+vectorizer = joblib.load('./models/vectorizer_css.pkl')
 st.set_page_config(page_title="Twitter Sentiment")
 
 def predict_sentiment(text):
