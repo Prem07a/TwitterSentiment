@@ -3,6 +3,8 @@ import streamlit as st
 import streamlit.components.v1 as components
 import joblib
 import base64
+import streamlit_pdf_viewer
+
 
 model = joblib.load('./models/bestSentiment_css.pkl')
 vectorizer = joblib.load('./models/vectorizer_css.pkl')
@@ -27,10 +29,8 @@ def twitter_sentiment_analysis():
         base64_pdf = base64.b64encode(f.read()).decode('utf-8')
 
     
-    pdf_display = F'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>'
-
-    
-    st.markdown(pdf_display, unsafe_allow_html=True)
+    pdf_viewer = streamlit_pdf_viewer.pdf_viewer('./sentiment.pdf')
+    st.markdown(pdf_viewer, unsafe_allow_html=True)
     
 def sentiment_check():
     st.image('./image/tweet.png', width=150)
