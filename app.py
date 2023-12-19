@@ -1,6 +1,5 @@
 # app.py
 import streamlit as st
-import streamlit.components.v1 as components
 import joblib
 
 
@@ -13,14 +12,12 @@ def predict_sentiment(text):
     
     input_data = [text]
 
-    # Apply the saved CountVectorizer
     processed_data = vectorizer.transform(input_data)
 
     prediction = model.predict(processed_data)
    
     return prediction[0]
 
-# Define the pages
 def twitter_sentiment_analysis():
     st.title("Twitter Sentiment Analysis")
 
@@ -9462,7 +9459,7 @@ def sentiment_check():
 
     user_text = st.text_area("Enter text for sentiment check:", placeholder='@tweet')
 
-    tweet_button = st.button("Tweet", key="tweet_button", help="Click to analyze sentiment with Twitter logo")
+    tweet_button = st.button("Tweet", key="tweet_button", help="Click to analyze sentiment.")
     if tweet_button:
         sentiment_result = predict_sentiment(user_text)
         
