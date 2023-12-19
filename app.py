@@ -23,7 +23,7 @@ def predict_sentiment(text):
 def twitter_sentiment_analysis():
     st.title("Twitter Sentiment Analysis")
     
-    with open('./SentimentAnalysis.pdf', "rb") as f:
+    with open('./sentiment.pdf', "rb") as f:
         base64_pdf = base64.b64encode(f.read()).decode('utf-8')
 
     
