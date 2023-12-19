@@ -23,13 +23,9 @@ def predict_sentiment(text):
 # Define the pages
 def twitter_sentiment_analysis():
     st.title("Twitter Sentiment Analysis")
-    
-    
-    # pdf_viewer = streamlit_pdf_viewer.pdf_viewer('./sentiment.pdf')
-    # st.markdown(pdf_viewer, unsafe_allow_html=True)
-    components.html(
-        """
-        <!DOCTYPE html>
+
+    html_code = """
+    <!DOCTYPE html>
 
 <html lang="en">
 <head><meta charset="utf-8"/>
@@ -9457,9 +9453,9 @@ weighted avg       0.77      0.77      0.77    400000
 </body>
 </html>
 
-        """
-    )
-    
+    """
+    st.components.v1.html(html_code, width=763, height=24000, scrolling=False)
+
 def sentiment_check():
     st.image('./image/tweet.png', width=150)
     st.title("Sentiment Check")
