@@ -1,6 +1,11 @@
-<img src="./image/tweet.png" width=150>
+<div style="display: flex; align-items: center;">
 
-# Twitter Sentiment Analysis using NLP and Streamlit
+  <img src="./image/tweet.png" width="150" style="margin-right: 10px;"/>
+
+  <h1>Twitter Sentiment Analysis using NLP and Streamlit</h1>
+
+</div>
+
 
 ## Overview
 
@@ -13,7 +18,6 @@ This project implements a Twitter sentiment analysis tool using Natural Language
 - [Setup](#setup)
 - [Usage](#usage)
 - [Demo](#demo)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Project Structure
@@ -52,11 +56,12 @@ Access the application in your web browser at `http://localhost:8501`. Interact 
 
 ## Demo
 
-Include screenshots, GIFs, or links to the deployed application. Showcase the application's user interface and functionality.
+#### 1. Negative Tweet
+<img src="./image/neg_demo.png">
 
-## Contributing
+#### 2. Positive Tweet
+<img src="./image/pos_demo.png">
 
-Feel free to contribute to this project by opening issues or submitting pull requests. Your contributions are welcome!
 
 ## License
 
