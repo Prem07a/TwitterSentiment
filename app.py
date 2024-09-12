@@ -23,7 +23,7 @@ def predict_sentiment(text):
 
     labels = ["Negative", "Positive"]
     values = list(prediction)
-    if max(values) >= 75: 
+    if max(values) >= .75: 
         if values[0] > values[1]:
             values = [1,0]
         else:
