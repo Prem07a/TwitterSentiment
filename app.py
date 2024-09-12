@@ -1,4 +1,4 @@
-# app.py
+    # app.py
 import streamlit as st
 import joblib
 import plotly.graph_objects as go
@@ -82,7 +82,7 @@ def sentiment_check():
             sentiment_result = predict_sentiment(user_text)
 
             if sentiment_result == "Positive":
-                st.success("Predicted Sentiment: Negative")
+                st.success("Predicted Sentiment: Positive")
             else:
                 st.error("Predicted Sentiment: Negative")
 
