@@ -23,6 +23,14 @@ def predict_sentiment(text):
 
     labels = ["Negative", "Positive"]
     values = list(prediction)
+    if max(values) >= 75: 
+        if values[0] > values[1]:
+            values = [1,0]
+        else:
+            values = [0,1]
+    else:
+        values = [.5,.5]
+
     fig = go.Figure(
         data=[
             go.Pie(
@@ -36,6 +44,9 @@ def predict_sentiment(text):
     )
 
     st.sidebar.plotly_chart(fig)
+    
+    if values[0] == 0.5:
+        return "Neutral"
     return labels[0] if values[0] > values[1] else labels[1]
 
 
@@ -83,6 +94,8 @@ def sentiment_check():
 
             if sentiment_result == "Positive":
                 st.success("Predicted Sentiment: Positive")
+            elif sentiment_result == "Neutral":
+                st.warning("Predicted Sentiment: Neutral")
             else:
                 st.error("Predicted Sentiment: Negative")
 
