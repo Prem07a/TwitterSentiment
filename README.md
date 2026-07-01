@@ -61,14 +61,6 @@ The **Sentiment Check** page also accepts CSV uploads with a `tweet`, `text`,
 adds `predicted_sentiment`, `negative_score`, and `positive_score`, then lets you
 download `twitter_sentiment_predictions.csv`.
 
-OpenClaw users can use
-[TweetClaw](https://github.com/Xquik-dev/tweetclaw) as one optional source for
-reviewed Twitter/X text exports before uploading a CSV:
-
-```bash
-openclaw plugins install npm:@xquik/tweetclaw
-```
-
 ## Demo
 
 #### 1. Negative Tweet
