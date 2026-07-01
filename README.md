@@ -54,6 +54,21 @@ streamlit run app.py
 
 Access the application in your web browser at `http://localhost:8501`. Interact with the sentiment analysis tool to analyze Twitter text for sentiment.
 
+### Batch CSV Sentiment
+
+The **Sentiment Check** page also accepts CSV uploads with a `tweet`, `text`,
+`content`, `message`, `body`, `post`, `comment`, or `review` column. The app
+adds `predicted_sentiment`, `negative_score`, and `positive_score`, then lets you
+download `twitter_sentiment_predictions.csv`.
+
+OpenClaw users can use
+[TweetClaw](https://github.com/Xquik-dev/tweetclaw) as one optional source for
+reviewed Twitter/X text exports before uploading a CSV:
+
+```bash
+openclaw plugins install npm:@xquik/tweetclaw
+```
+
 ## Demo
 
 #### 1. Negative Tweet
