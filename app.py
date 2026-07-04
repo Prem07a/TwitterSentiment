@@ -3,6 +3,8 @@ import streamlit as st
 import joblib
 import plotly.graph_objects as go
 
+from xquik_export import normalize_xquik_csv
+
 
 st.set_page_config(page_title="Twitter Sentiment", page_icon="./image/tweet.png")
 
@@ -14,7 +16,7 @@ def set_models():
     return model, vectorizer
 
 
-def predict_sentiment(text):
+def predict_sentiment_values(text):
     input_data = [text]
     model, vectorizer = set_models()
     processed_data = vectorizer.transform(input_data)
@@ -31,6 +33,17 @@ def predict_sentiment(text):
     else:
         values = [.5,.5]
 
+    if values[0] == 0.5:
+        sentiment = "Neutral"
+    else:
+        sentiment = labels[0] if values[0] > values[1] else labels[1]
+
+    return sentiment, labels, values
+
+
+def predict_sentiment(text):
+    sentiment, labels, values = predict_sentiment_values(text)
+
     fig = go.Figure(
         data=[
             go.Pie(
@@ -44,10 +57,8 @@ def predict_sentiment(text):
     )
 
     st.sidebar.plotly_chart(fig)
-    
-    if values[0] == 0.5:
-        return "Neutral"
-    return labels[0] if values[0] > values[1] else labels[1]
+
+    return sentiment
 
 
 def twitter_sentiment_analysis():
@@ -87,6 +98,23 @@ def sentiment_check():
         st.title("Sentiment Check")
 
     user_text = st.text_area("Enter text for sentiment check:", placeholder="@tweet")
+    xquik_file = st.file_uploader("Upload a saved Xquik CSV export", type=["csv"])
+
+    if xquik_file is not None:
+        try:
+            rows = normalize_xquik_csv(xquik_file.getvalue().decode("utf-8-sig"))
+        except ValueError as exc:
+            st.error(str(exc))
+        else:
+            if rows:
+                analyzed_rows = []
+                for row in rows[:100]:
+                    sentiment, _, _ = predict_sentiment_values(row["text"])
+                    analyzed_rows.append({**row, "sentiment": sentiment})
+                st.success(f"Analyzed {len(analyzed_rows)} Xquik export rows.")
+                st.dataframe(analyzed_rows, use_container_width=True)
+            else:
+                st.warning("No non-empty tweet text rows found in the Xquik export.")
 
     if st.button("Tweet", key="tweet_button", help="Click to analyze sentiment."):
         if user_text.strip():
