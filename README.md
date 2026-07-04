@@ -54,6 +54,16 @@ streamlit run app.py
 
 Access the application in your web browser at `http://localhost:8501`. Interact with the sentiment analysis tool to analyze Twitter text for sentiment.
 
+The Tweet Check page can also analyze a saved Xquik CSV export. Upload a file
+with a `text`, `tweet_text`, `full_text`, or `content` column and the app will
+score up to 100 non-empty rows without changing the single-text workflow.
+
+Validate the Xquik CSV parser with:
+
+```bash
+python -m unittest test_xquik_export.py
+```
+
 ## Demo
 
 #### 1. Negative Tweet
@@ -66,6 +76,4 @@ Access the application in your web browser at `http://localhost:8501`. Interact 
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
-```
-
 @Prem Gaikwad 2023
